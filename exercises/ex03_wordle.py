@@ -3,18 +3,16 @@
 __author__ = "730663103"  # who i am
 
 
-def input_guess(secret_word_len: int) -> str:  # defining fn. to get players guess word
-    while True:  # creating loop to make sure guess is length of secret word
+def input_guess(secret_word_len: int) -> str:  # defining fn. to get players guess
+    """Function to get players to guess a word of the right length"""
+    guess = input(
+        f"Enter a {secret_word_len} character word: "
+    )  # creating var. for input guess
+    while secret_word_len != len(guess):
         guess = input(
-            f"Enter a {secret_word_len}-character word: "
-        )  # creating var. for input guess
-        word_len: int = len(guess)
-        if word_len == secret_word_len:  # if length of guess is length of secret word
-            return guess  # send guess to next part
-        else:
-            print(
-                f"That wasn't {secret_word_len} chars! Try again: "
-            )  # if wrong length loop back to original input question
+            f"That wasn't {secret_word_len} chars! Try again: "
+        )  # if wrong length get new input
+    return guess
 
 
 def contains_char(
@@ -92,7 +90,7 @@ def main(secret: str) -> None:  # defining fn. to bring all fns. together
 
         if guess == secret:  # if you did it correctly
             print(f"You won in {turns + 1}/6 turns!")  # print winner's statement
-            exit()  # leave program
+            return  # end program
 
         turns += 1  # if you didn't get it, add to turns for next loop with next turn
 
@@ -101,4 +99,4 @@ def main(secret: str) -> None:  # defining fn. to bring all fns. together
 
 
 if __name__ == "__main__":
-    main(secret="codes")  # calling main with codes as secret word
+    main(secret="dollar")  # calling main with codes as secret word
