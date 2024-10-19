@@ -6,6 +6,8 @@ __author__ = "730663103"  # who i am
 def all(
     int_list: list[int], num: int
 ) -> bool:  # defining. fn to check if all numbers equal int
+    if len(int_list) == 0:
+        return False
     for elem in int_list:  # using for in to iterate through list
         if elem != num:  # when any part of list is not equal to int
             return False  # say False
